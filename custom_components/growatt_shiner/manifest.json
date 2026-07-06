@@ -1,0 +1,12 @@
+{
+  "domain": "growatt_shiner",
+  "name": "Growatt Shiner",
+  "codeowners": ["@notgriffin"],
+  "config_flow": true,
+  "documentation": "https://github.com/notgriffin/growatt_shiner",
+  "integration_type": "hub",
+  "iot_class": "cloud_polling",
+  "issue_tracker": "https://github.com/notgriffin/growatt_shiner/issues",
+  "requirements": [],
+  "version": "0.1.0"
+}

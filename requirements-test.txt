@@ -1,0 +1,5 @@
+# Test dependencies. pytest-homeassistant-custom-component (PHACC) is released
+# lockstep with Home Assistant and pulls in the matching HA version. Pin this to
+# the HA release you target once the integration is published; unpinned here to
+# track current stable during initial development.
+pytest-homeassistant-custom-component
