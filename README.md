@@ -29,6 +29,10 @@ Verified against a **MIN 8.2‑11.4KTL‑XH‑US** hybrid inverter.
 Voltage, current, frequency, power‑factor and rated‑power entities are created
 disabled by default — enable them per inverter if you want them.
 
+<img src="images/device-page.png" alt="Inverter device page in Home Assistant showing device info and the full sensor list" width="700">
+
+<img src="images/diagnostic-sensors.png" alt="Diagnostic card with inverter temperature" width="448">
+
 ## Installation
 
 **HACS (custom repository):** in HACS, open **⋮ → Custom repositories**, add
