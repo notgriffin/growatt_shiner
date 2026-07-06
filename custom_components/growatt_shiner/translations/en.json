@@ -1,0 +1,64 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Growatt Shiner",
+        "description": "Sign in with your Growatt Shiner (shiner-us.growatt.com) account. You'll enter a captcha on the next screen.",
+        "data": {
+          "username": "Username",
+          "password": "Password",
+          "host": "Region",
+          "ai_task_entity": "AI Task entity (optional)"
+        },
+        "data_description": {
+          "password": "Stored so the integration can re-authenticate automatically when the ~30-day session expires.",
+          "ai_task_entity": "An AI Task entity (OpenAI, Anthropic, Google, local Ollama, ...) used to read the login captcha automatically for unattended re-authentication. Leave blank to use your default AI Task entity, or to solve captchas manually."
+        }
+      },
+      "captcha": {
+        "title": "Enter the captcha",
+        "description": "Type the code shown in the image, then continue.\n\n![Captcha]({captcha_image})",
+        "data": {
+          "captcha": "Captcha code"
+        }
+      },
+      "reauth_confirm": {
+        "title": "Re-authenticate",
+        "description": "Your Growatt Shiner session for {username} has expired. Re-enter your password to sign in again.",
+        "data": {
+          "password": "Password"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Failed to connect to Growatt Shiner. Check your connection and try again.",
+      "invalid_auth": "Invalid username or password.",
+      "invalid_captcha": "Incorrect captcha code. A new captcha has been loaded — please try again."
+    },
+    "abort": {
+      "already_configured": "This Growatt Shiner account is already configured.",
+      "reauth_successful": "Re-authentication was successful."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Growatt Shiner options",
+        "data": {
+          "scan_interval": "Update interval (seconds)",
+          "ai_task_entity": "AI Task entity for captcha solving"
+        },
+        "data_description": {
+          "ai_task_entity": "Used to auto-solve the login captcha for unattended re-authentication. Leave blank to use your default AI Task entity."
+        }
+      }
+    }
+  },
+  "entity": {
+    "binary_sensor": {
+      "online": {
+        "name": "Online"
+      }
+    }
+  }
+}

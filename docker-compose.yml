@@ -1,0 +1,11 @@
+services:
+  homeassistant:
+    image: ghcr.io/home-assistant/home-assistant:stable
+    container_name: growatt_shiner_ha
+    volumes:
+      - ./.ha-config:/config
+      - ./custom_components:/config/custom_components:ro
+    ports:
+      - "8123:8123"
+    environment:
+      - TZ=UTC
