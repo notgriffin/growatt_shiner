@@ -6,8 +6,9 @@ Google, local Ollama, ...) and returns the digits, so re-authentication can run
 unattended when the ~30-day session expires.
 
 AI Task attachments must resolve through a media source, so the captcha PNG is
-written to ``<config>/media/growatt_shiner/`` (the default ``local`` media dir)
-for the duration of the call and removed afterwards.
+written to the ``local`` media source's directory (``<config>/media/`` by
+default, or wherever ``media_dirs`` remaps it to) under a ``growatt_shiner``
+subfolder, for the duration of the call, and removed afterwards.
 """
 
 from __future__ import annotations
@@ -62,7 +63,16 @@ async def async_solve_captcha(
     # ai_task is a soft dependency; import lazily so setup works without it.
     from homeassistant.components import ai_task
 
-    media_dir = hass.config.path("media", _MEDIA_SUBDIR)
+    local_media_dir = hass.config.media_dirs.get("local")
+    if local_media_dir is None:
+        _LOGGER.warning(
+            "AI captcha solving requires the 'local' media source directory, "
+            "but it is not configured (media_dirs has no 'local' entry); "
+            "falling back to manual captcha entry"
+        )
+        return None
+
+    media_dir = os.path.join(local_media_dir, _MEDIA_SUBDIR)
     path = os.path.join(media_dir, _CAPTCHA_FILE)
 
     def _write() -> None:
